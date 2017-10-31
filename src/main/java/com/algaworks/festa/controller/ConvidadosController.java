@@ -21,7 +21,16 @@ public class ConvidadosController {
 		ModelAndView mv = new ModelAndView("ListaConvidados");
 		List <Convidado> lista = convidados.findAll();
 		mv.addObject("convidados",lista);
+		mv.addObject(new Convidado());
 		return mv;
 	}
+
+	@PostMapping("/convidados")
+	public String salvar(Convidado c) {
+		convidados.save(c);
+		return "redirect:/convidados";
+
+	}
+
 
 }
